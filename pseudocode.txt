@@ -1,0 +1,99 @@
+reset = getelementbyid(reset);
+
+
+
+create a board class
+    static palletes = [
+        nameOfPalette: {
+            side: hexadecimal
+            header: hexa
+            reset: hexa
+            field: hexa
+        }
+    ]
+
+    static input;
+    static palette;
+
+    constructor(paletteChoice, input){
+        rows = input
+        columns = input
+        palleteChoice(based on user input)
+    }
+
+    factory method to generate squares/cells objects(){
+        let boardArr =[][];
+        for loop(i<rows){
+           row = document.createElement(tr)
+            for loop(j<columns){
+                var = document.createlement(td)
+                row.append(var)
+                let square = new Cell(i, j, var)
+                boardArr[i][j] = square;
+            }
+        }
+    }
+    gameOver(){
+        this.renderEndMsg()
+        this.revealBombs
+    }
+
+
+
+create a cells class
+    constructor(i, j, var){
+        locationRow: i
+        locationColumn: j
+        bomb: boolean
+        flag: boolean
+        clicked: false
+        DOM = var
+        DOM.addeventlistener(click, this.clicked)
+        DOM.addEventListener(right-click, flagged)
+    }
+    clicked(evt.target){
+        if (this.clicked) return;
+        if (bomb) start.gameOver()
+        clicked = true
+        renderCell()
+    }
+
+    checkMines(){
+        let count = 0;
+        for (let i =locationRow - 1; locationRow + 1; i++){
+            for (let j = locationCol - 1; locationRow + 1; j++){
+                if (boardArr[i][j].bomb){
+                    count++
+                }
+            }    
+        }
+        if count is 0
+            loop rows 
+                loop columns
+                    if each is in bounds
+                        checkMines()
+        return count
+    }
+
+    flagged(){
+        this.flag = true
+    }
+
+    renderCell(){
+        this.DOM.textContent = `${checkMines()}`;
+    }
+
+
+init() {
+    Board.palette = input
+    Board.input = input
+    start = new Board(Board.palette, Board.input)
+    reset.addEventListener(click, init)
+}
+
+
+submit.onclick = init()
+
+
+
+I think this is the basic logic of this game including the recursive method that clears tiles with no mines surrounding them. I'm sure how I've selected some of the DOM Elements will not work in the actual code
