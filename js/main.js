@@ -26,15 +26,34 @@ class Board {
             for (let j=0;j<this.cols;j++){
                 let eachCell = document.createElement('td');
                 eachRow.append(eachCell);
+                let square = new Square(eachCell,i,j);
+                boardArr[i][j] = square;
+
             }
             table.appendChild(eachRow);
         }
         mainEl.append(table);
-        console.log(mainEl);
+        console.log(boardArr);
 
     }
 }
 
+class Square {
+    constructor(domSquare, i, j){
+        this.rowLocation = i;
+        this.colLocation = j;
+        this.domEl = domSquare;
+        this.domEl.addEventListener('click', this.clicked.bind(this));
+    }
+    clicked = (evt) =>{
+        console.log(this.rowLocation);
+        this.renderCell();
+    }
+    renderCell= () =>{
+        this.domEl.style.backgroundColor = "#c46069";
+        this.domEl.textContent = "10";
+    }
+}
 /* Event Listeners */
 //submit button functionality
 boardSizeInp.addEventListener("submit", (e) =>{

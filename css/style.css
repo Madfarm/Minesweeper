@@ -63,12 +63,12 @@ table {
     margin: 0 auto;
     padding: 10% 0;
 }
-
 table td {
     background-color: #4d181c;
     width: 30px;
     height: 30px;
-    border: 1px solid black;    
+    border: 1px solid black;
+    color: black;    
 }
 table td:hover{
     background-color: #144058;
