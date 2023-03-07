@@ -41,7 +41,7 @@ button#reset{
     padding: 0;
     display: block;
 
-    float: right;
+    justify-self: flex-end;
     text-align: center;
     background-color: #144058;
     color: #e58d2e;
@@ -51,9 +51,30 @@ button#reset{
 button#reset:hover{
     background-color: #145068;
 }
+
+
 main {
     background-color: #e58d2e;
+    text-align: center;
 }
+table {
+    border-collapse: collapse;
+    display: inline-block;
+    margin: 0 auto;
+    padding: 10% 0;
+}
+
+table td {
+    background-color: #4d181c;
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;    
+}
+table td:hover{
+    background-color: #144058;
+}
+
+
 
 footer {
     color: #4d181c;
