@@ -1,6 +1,7 @@
 /* Cached Elements */
 let boardSizeInp = document.getElementById("input");
 let mainEl = document.querySelector("main");
+let footEl = document.querySelector("footer");
 
 /* Global Variables */
 let boardSize;
@@ -57,8 +58,24 @@ class Board {
             } else {
                 Board.boardArr[r][c].mine = true;
             }
+        }   
+    }
+
+    gameOver = () => {
+        for(let i=0;i<this.rows;i++){
+            for(let j=0;j<this.cols;j++){
+                if(Board.boardArr[i][j].mine){
+                    Board.boardArr[i][j].renderCell();
+                }
+                Board.boardArr[i][j].stopListening();
+            }
         }
-        
+        this.renderGameOverText();
+    }
+
+    renderGameOverText = () =>{
+        footEl.textContent = "YOU LOSE";
+        footEl.style.fontSize = "40px";
     }
 }
 
@@ -68,20 +85,32 @@ class Square {
         this.colLocation = j;
         this.mine = false;
 
+        //Binding these functions' this and assigning them to a variable
+        this.boundClicked = this.clicked.bind(this);
+
         //Giving the instance it's associated DOM element as a property
         this.domEl = domSquare;
-        this.domEl.addEventListener('click', this.clicked.bind(this));
+        this.domEl.addEventListener('click', this.boundClicked);
     }
     clicked = (evt) =>{
-        console.log(`click = ${this.rowLocation},${this.colLocation}`);
+        //console.log(`click = ${this.rowLocation},${this.colLocation}`);
         if (this.mine){
-            console.log("Dead");
+            this.domEl.style.backgroundColor = "red";
+            gameOn.gameOver();
         }
         this.renderCell();
     }
-    renderCell= () =>{
-        this.domEl.style.backgroundColor = "#c46069";
-        this.domEl.textContent = "10";
+    renderCell = () =>{
+        if (this.mine){
+            this.domEl.textContent = "M";
+        } else {
+            this.domEl.style.backgroundColor = "#c46069";
+            this.domEl.textContent = "10";
+        }
+    }
+
+    stopListening = () =>{
+        this.domEl.removeEventListener('click', this.boundClicked);
     }
 }
 /* Event Listeners */
