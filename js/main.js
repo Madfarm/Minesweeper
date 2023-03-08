@@ -35,7 +35,6 @@ class Board {
                 eachRow.append(eachCell);
                 let square = new Square(eachCell,i,j);
                 Board.boardArr[i][j] = square;
-
             }
             table.appendChild(eachRow);
         }
@@ -84,28 +83,49 @@ class Square {
         this.rowLocation = i;
         this.colLocation = j;
         this.mine = false;
+        this.flagged = false;
+        this.opened = false;
 
         //Binding these functions' *this* and assigning them to a variable
         this.boundClicked = this.clicked.bind(this);
+        this.boundRightClicked = this.rightClicked.bind(this);
 
         //Giving the instance its associated DOM element as a property
         this.domEl = domSquare;
         this.domEl.addEventListener('click', this.boundClicked);
+        this.domEl.addEventListener('contextmenu', this.boundRightClicked);
     }
     clicked = (evt) =>{
         //console.log(`click = ${this.rowLocation},${this.colLocation}`);
+        if (this.flagged) return;
         if (this.mine){
             this.domEl.style.backgroundColor = "red";
             gameOn.gameOver();
         }
+
+        this.opened = true;
+
+        this.renderCell();
+    }
+    rightClicked = (evt) =>{
+        evt.preventDefault();
+
+        if (this.opened) return;
+
+        this.flagged == true ? this.flagged = false : this.flagged = true;
+        
         this.renderCell();
     }
     renderCell = () =>{
-        if (this.mine){
+        if (this.flagged){
+            this.domEl.textContent = "F";
+        }else if (this.mine){
             this.domEl.textContent = "M";
-        } else {
+        } else if (this.opened) {
             this.domEl.style.backgroundColor = "#c46069";
             this.domEl.textContent = "10";
+        } else {
+            this.domEl.textContent = "";
         }
     }
 

@@ -14,7 +14,7 @@ I accomplished much more than I intended on day one, so today I will be focussin
 
 > placeMines method
 >
->> surprise! time to research recursion
+> - surprise! time to research recursion
 
 > gameOver method
 
@@ -22,5 +22,5 @@ I accomplished much more than I intended on day one, so today I will be focussin
 
 > Probably Day 3
 >
->> checkMines method
->> adding recursive flood feature to checkmines method
+> - checkMines method
+> - adding recursive flood feature to checkmines method
