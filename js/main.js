@@ -48,7 +48,7 @@ class Board {
         
             Using a global variable and recursion allows us to place the correct number of mines with no duplicates.
         */
-        for (minesPlaced;minesPlaced<this.numMines;minesPlaced++){
+        for (minesPlaced; minesPlaced < this.numMines ; minesPlaced++){
             let r = Math.floor(Math.random()*this.rows);
             let c = Math.floor(Math.random()*this.cols);
             
@@ -85,10 +85,10 @@ class Square {
         this.colLocation = j;
         this.mine = false;
 
-        //Binding these functions' this and assigning them to a variable
+        //Binding these functions' *this* and assigning them to a variable
         this.boundClicked = this.clicked.bind(this);
 
-        //Giving the instance it's associated DOM element as a property
+        //Giving the instance its associated DOM element as a property
         this.domEl = domSquare;
         this.domEl.addEventListener('click', this.boundClicked);
     }
