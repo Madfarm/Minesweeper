@@ -6,4 +6,13 @@ Let's build and style the html layout then construct the board class and if we h
 >HTML layout/submit button implementation and JS testing
 >Styling the layout
 >Board class
->Factory method for cell/square instances
+>Factory method for cell/square instance
+
+## Day 2
+I accomplished much more than I intended on day one, so today I will be focussing on some of the more advanced aspects of the game, but some research is also required
+> research right click eventlistener and how to skip an iteration in a loop
+> placeMines method
+> gameOver method
+> flagging a square
+> checkMines method
+> adding recursive flood feature to checkmines method(If I have time)

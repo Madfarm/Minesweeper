@@ -61,7 +61,7 @@ table {
     border-collapse: collapse;
     display: inline-block;
     margin: 0 auto;
-    padding: 10% 0;
+    padding: 1em 0;
 }
 table td {
     background-color: #4d181c;
