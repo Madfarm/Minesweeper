@@ -24,3 +24,11 @@ I accomplished much more than I intended on day one, so today I will be focussin
 >
 > - checkMines method
 > - adding recursive flood feature to checkmines method
+
+## Day 3
+The fabled Day 3. Here comes the biggest mountain of this program. I've freed the entire day up to implement this one feature and I have a good feeling I might need it.
+> checkMines()  
+> - likely needs recursion
+> - likely also requires a method for testing
+>> "The Flood" feature
+>> - similarily likely needs recursion

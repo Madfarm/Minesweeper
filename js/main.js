@@ -57,7 +57,7 @@ class Board {
             } else {
                 Board.boardArr[r][c].mine = true;
             }
-        }
+        } 
     }
 
     gameOver = () => {
@@ -137,7 +137,7 @@ class Square {
             this.domEl.textContent = "";
         }
     }
-    
+
     //remove the ability to interact with the board once the game ends
     stopListening = () => {
         this.domEl.removeEventListener('click', this.boundClicked);
