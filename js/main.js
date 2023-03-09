@@ -108,6 +108,7 @@ class Square {
 
     clicked = (evt) => {
         //console.log(`click = ${this.rowLocation},${this.colLocation}`);
+        if (this.opened) return;
         if (this.flagged) return;
         if (this.mine) {
             this.domEl.style.backgroundColor = "red";
@@ -129,8 +130,26 @@ class Square {
         this.renderFlag();
     }
 
+    clickAdjacent = () => {
+        let currRow, currCol;
+        for (let i = - 1; i < 2; i++) {
+            for (let j = - 1; j < 2; j++) {
+                currRow = this.rowLocation + i;
+                currCol = this.colLocation + j;
+
+                //Making sure we only test squares for mines if they are within the board
+                if (currRow >= 0 && currRow < gameOn.rows) {
+                    if (currCol >= 0 && currCol < gameOn.cols) {
+                        Board.boardArr[currRow][currCol].clicked();
+                    }
+                }
+
+            }
+        }
+    }
+
     checkMines = () => {
-        //currRow and currCol are for readability - my original solution was hard on the eyes and lengthy
+        //currRow and currCol added for readability - my original solution was hard on the eyes and lengthy
         let count, currRow, currCol;
         count = 0;
         for (let i = - 1; i < 2; i++) {
@@ -141,30 +160,33 @@ class Square {
                 //Making sure we only test squares for mines if they are within the board
                 if (currRow >= 0 && currRow < gameOn.rows) {
                     if (currCol >= 0 && currCol < gameOn.cols) {
-                        if (Board.boardArr[currRow][currCol].mine){
+                        if (Board.boardArr[currRow][currCol].mine) {
                             count++
                         }
-                        
+
                     }
                 }
-               
+
             }
         }
+
         return count
     }
 
     renderCell = () => {
         if (this.mine) {
             this.domEl.textContent = "M";
-        } else if (this.opened) {
+        } else if (this.checkMines() != 0) {
             this.domEl.style.backgroundColor = "#c46069";
             this.domEl.textContent = `${this.checkMines()}`;
         } else {
+            this.domEl.style.backgroundColor = "#c46069";
             this.domEl.textContent = "";
+            this.clickAdjacent()
         }
     }
 
-    renderFlag() {
+    renderFlag = () => {
         if (this.flagged == true) {
             this.domEl.textContent = "F";
         } else {
