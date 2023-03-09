@@ -92,3 +92,7 @@ input::placeholder{
     color: #4d181c;
 }
 
+.endText {
+    font-size: 40px;
+}
+

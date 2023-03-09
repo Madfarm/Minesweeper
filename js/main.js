@@ -14,6 +14,7 @@ class Board {
     constructor(input) {
         this.rows = input;
         this.cols = input;
+        this.win = false;
 
         //this ensures there will be 99 mines on a 20x20 and 1 mine on a 3x3
         this.numMines = Math.floor((input * input) * .25) - 1;
@@ -72,9 +73,33 @@ class Board {
         this.renderGameOverText();
     }
 
+    checkForWin = () => {
+        for (let i = 0; i < this.rows; i++) {
+            for (let j = 0; j < this.cols; j++) {
+                if (Board.boardArr[i][j].opened ==  false && Board.boardArr[i][j].mine == false) {
+                   return
+                }
+                
+            }
+        }
+
+        for (let i = 0; i < this.rows; i++) {
+            for (let j = 0; j < this.cols; j++) {
+                Board.boardArr[i][j].stopListening();
+            }
+        }
+        this.win = true;
+        this.renderGameOverText();
+    }
+
     renderGameOverText = () => {
-        footEl.textContent = "YOU LOSE";
-        footEl.style.fontSize = "40px";
+        footEl.classList.add('endText');
+        if (this.win == true) {
+            footEl.textContent = "YOU WIN!"
+        } else {
+            footEl.textContent = "YOU LOSE";
+            
+        }
     }
 
     revealMines = () => {
@@ -118,6 +143,7 @@ class Square {
         this.opened = true;
 
         this.renderCell();
+        gameOn.checkForWin();
     }
 
     rightClicked = (evt) => {
@@ -202,9 +228,9 @@ class Square {
 }
 /* Event Listeners */
 //submit button functionality
-boardSizeInp.addEventListener("submit", (e) => {
+boardSizeInp.addEventListener("submit", (evt) => {
 
-    e.preventDefault();
+    evt.preventDefault();
 
     boardSize = document.getElementById("board-size");
 
