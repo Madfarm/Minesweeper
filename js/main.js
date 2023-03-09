@@ -76,6 +76,16 @@ class Board {
         footEl.textContent = "YOU LOSE";
         footEl.style.fontSize = "40px";
     }
+
+    revealMines = () =>{
+        for (let i = 0; i < this.rows; i++) {
+            for (let j = 0; j < this.cols; j++) {
+                if (Board.boardArr[i][j].mine) {
+                    Board.boardArr[i][j].renderCell();
+                }
+            }
+        }
+    }
 }
 
 class Square {
