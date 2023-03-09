@@ -57,7 +57,7 @@ class Board {
             } else {
                 Board.boardArr[r][c].mine = true;
             }
-        } 
+        }
     }
 
     gameOver = () => {
@@ -77,7 +77,7 @@ class Board {
         footEl.style.fontSize = "40px";
     }
 
-    revealMines = () =>{
+    revealMines = () => {
         for (let i = 0; i < this.rows; i++) {
             for (let j = 0; j < this.cols; j++) {
                 if (Board.boardArr[i][j].mine) {
@@ -129,12 +129,36 @@ class Square {
         this.renderFlag();
     }
 
+    checkMines = () => {
+        //currRow and currCol are for readability - my original solution was hard on the eyes and lengthy
+        let count, currRow, currCol;
+        count = 0;
+        for (let i = - 1; i < 2; i++) {
+            for (let j = - 1; j < 2; j++) {
+                currRow = this.rowLocation + i;
+                currCol = this.colLocation + j;
+
+                //Making sure we only test squares for mines if they are within the board
+                if (currRow >= 0 && currRow < gameOn.rows) {
+                    if (currCol >= 0 && currCol < gameOn.cols) {
+                        if (Board.boardArr[currRow][currCol].mine){
+                            count++
+                        }
+                        
+                    }
+                }
+               
+            }
+        }
+        return count
+    }
+
     renderCell = () => {
         if (this.mine) {
             this.domEl.textContent = "M";
         } else if (this.opened) {
             this.domEl.style.backgroundColor = "#c46069";
-            this.domEl.textContent = "10";
+            this.domEl.textContent = `${this.checkMines()}`;
         } else {
             this.domEl.textContent = "";
         }
