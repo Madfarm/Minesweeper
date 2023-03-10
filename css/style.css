@@ -46,6 +46,12 @@ button#reset{
     background-color: #144058;
     color: #e58d2e;
     border: transparent;
+
+    position: absolute;
+    right: 5px;
+    height: 100px;
+
+    cursor: pointer;
 }
 
 button#reset:hover{
@@ -104,5 +110,9 @@ input::placeholder{
 
 .endText {
     font-size: 40px;
+}
+
+form>button {
+    cursor: pointer;
 }
 
