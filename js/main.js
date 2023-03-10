@@ -12,6 +12,18 @@ let minesPlaced = 0;
 class Board {
     static boardArr;
 
+    //Text colors
+    static colors = {
+        1: "darkblue",
+        2: "darkgreen",
+        3: "brightred",
+        4: "white",
+        5: "#1B003D",
+        6: "#93F1E3",
+        7: "#06321E",
+        8: "darkgray"
+    }
+
     constructor(input) {
         this.rows = input;
         this.cols = input;
@@ -210,11 +222,15 @@ class Square {
     }
 
     renderCell = () => {
+        let surrMines = this.checkMines();
+
         if (this.mine) {
             this.domEl.classList.toggle("mine");
-        } else if (this.checkMines() != 0) {
+        } else if (surrMines != 0) {
             this.domEl.style.backgroundColor = "#c46069";
-            this.domEl.textContent = `${this.checkMines()}`;
+            this.domEl.style.color = Board.colors[surrMines];
+            this.domEl.innerHTML = `<strong>${surrMines}<strong>`;
+            
         } else {
             this.domEl.style.backgroundColor = "#c46069";
             this.domEl.textContent = "";
