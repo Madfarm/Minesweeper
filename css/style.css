@@ -77,6 +77,13 @@ table td:hover{
     background: url("../assets/img/flag2.png");
 }
 
+.mine {
+    background: url("../assets/img/mine2.png");
+}
+.clickedMine {
+    background: url("../assets/img/clickedMine.png")
+}
+
 
 
 footer {

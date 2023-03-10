@@ -132,11 +132,11 @@ class Square {
     }
 
     clicked = (evt) => {
-        //console.log(`click = ${this.rowLocation},${this.colLocation}`);
         if (this.opened) return;
         if (this.flagged) return;
         if (this.mine) {
-            this.domEl.style.backgroundColor = "red";
+            //needs a unique class because we are using image assets for the background
+            this.domEl.classList.toggle("clickedMine");
             gameOn.gameOver();
         }
 
@@ -156,6 +156,7 @@ class Square {
         this.renderFlag();
     }
 
+    //The notorious flood feature
     clickAdjacent = () => {
         let currRow, currCol;
         for (let i = - 1; i < 2; i++) {
@@ -200,7 +201,7 @@ class Square {
 
     renderCell = () => {
         if (this.mine) {
-            this.domEl.textContent = "M";
+            this.domEl.classList.toggle("mine");
         } else if (this.checkMines() != 0) {
             this.domEl.style.backgroundColor = "#c46069";
             this.domEl.textContent = `${this.checkMines()}`;
@@ -212,13 +213,6 @@ class Square {
     }
 
     renderFlag = () => {
-        /*
-        if (this.flagged == true) {
-            this.domEl.textContent = "F";
-        } else {
-            this.domEl.textContent = "";
-        }
-        */
        this.domEl.classList.toggle("flagged");
     }
 

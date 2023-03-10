@@ -38,5 +38,7 @@ Now that we are MVP we can focus on QoL features and cosmetics
 > adding an img/asset for the mines and flags
 > reset button functionality
 > - try to move the reset button
+> add first click immunity
 > update the readme file
+> add a color index for each amount of mines
 > add palette swapping(stretch goal)
