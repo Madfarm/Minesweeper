@@ -73,6 +73,9 @@ table td {
 table td:hover{
     background-color: #144058;
 }
+.flagged {
+    background: url("../assets/img/flag2.png");
+}
 
 
 

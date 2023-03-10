@@ -212,11 +212,14 @@ class Square {
     }
 
     renderFlag = () => {
+        /*
         if (this.flagged == true) {
             this.domEl.textContent = "F";
         } else {
             this.domEl.textContent = "";
         }
+        */
+       this.domEl.classList.toggle("flagged");
     }
 
     //remove the ability to interact with the board once the game ends
