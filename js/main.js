@@ -15,6 +15,7 @@ class Board {
         this.rows = input;
         this.cols = input;
         this.win = false;
+        this.firstClick = true;
 
         //this ensures there will be 99 mines on a 20x20 and 1 mine on a 3x3
         this.numMines = Math.floor((input * input) * .25) - 1;
@@ -132,6 +133,14 @@ class Square {
     }
 
     clicked = (evt) => {
+        //first click immunity
+        if (gameOn.firstClick == true && boardSize.value > 3){
+            if (this.mine == true){
+                this.mine = false;
+            }
+            gameOn.firstClick = false;
+        }
+
         if (this.opened) return;
         if (this.flagged) return;
         if (this.mine) {
