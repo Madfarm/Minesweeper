@@ -163,7 +163,6 @@ class Square {
                 currRow = this.rowLocation + i;
                 currCol = this.colLocation + j;
 
-                //Making sure we only test squares for mines if they are within the board
                 if (currRow >= 0 && currRow < gameOn.rows) {
                     if (currCol >= 0 && currCol < gameOn.cols) {
                         Board.boardArr[currRow][currCol].clicked();

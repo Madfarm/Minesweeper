@@ -32,3 +32,11 @@ The fabled Day 3. Here comes the biggest mountain of this program. I've freed th
 > - likely also requires a method for testing
 >> "The Flood" feature
 >> - similarily likely needs recursion
+
+## Day 4
+Now that we are MVP we can focus on QoL features and cosmetics
+> adding an img/asset for the mines and flags
+> reset button functionality
+> - try to move the reset button
+> update the readme file
+> add palette swapping(stretch goal)
