@@ -28,6 +28,7 @@ Minesweeper is an iconic logic puzzle computer game created in the 90s by Micros
 > No additional frameworks or libraries were utilizied as of this version(03/10/2023)
 
 ## Getting Started
+> https://madfarm.github.io/Minesweeper/
 1. To begin the game find the prompt asking you to enter a board size and enter your desired board size. Afterwards, click the "submit" button.
 2. A board is then generated and displayed
 3. Click any square to begin playing
