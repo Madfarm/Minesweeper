@@ -2,6 +2,7 @@
 let boardSizeInp = document.getElementById("input");
 let mainEl = document.querySelector("main");
 let footEl = document.querySelector("footer");
+let resetEl = document.getElementById("reset");
 
 /* Global Variables */
 let boardSize;
@@ -17,12 +18,12 @@ class Board {
         this.win = false;
         this.firstClick = true;
 
-        //this ensures there will be 99 mines on a 20x20 and 1 mine on a 3x3
+        //This ensures there will be 99 mines on a 20x20 and 1 mine on a 3x3
         this.numMines = Math.floor((input * input) * .25) - 1;
     }
 
     generateBoard = () => {
-        //generating an empty 2D array
+        //Generating an empty 2D array
         Board.boardArr = [];
         for (let i = 0; i < this.cols; i++) {
             Board.boardArr[i] = [];
@@ -133,7 +134,7 @@ class Square {
     }
 
     clicked = (evt) => {
-        //first click immunity
+        //First click immunity
         if (gameOn.firstClick == true && boardSize.value > 3){
             if (this.mine == true){
                 this.mine = false;
@@ -225,15 +226,15 @@ class Square {
        this.domEl.classList.toggle("flagged");
     }
 
-    //remove the ability to interact with the board once the game ends
+    //Remove the ability to interact with the board once the game ends
     stopListening = () => {
         this.domEl.removeEventListener('click', this.boundClicked);
         this.domEl.removeEventListener('contextmenu', this.boundRightClicked);
     }
 }
 /* Event Listeners */
-//submit button functionality
-boardSizeInp.addEventListener("submit", (evt) => {
+//Submit button functionality
+boardSizeInp.addEventListener('submit', (evt) => {
 
     evt.preventDefault();
 
@@ -249,6 +250,11 @@ boardSizeInp.addEventListener("submit", (evt) => {
         init();
     }
 
+})
+
+//Reset button functionality
+resetEl.addEventListener('click', () => {
+    window.location.reload();
 })
 
 /* Global Functions */
