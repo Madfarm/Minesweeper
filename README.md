@@ -37,6 +37,5 @@ Minesweeper is an iconic logic puzzle computer game created in the 90s by Micros
 Enjoy!
 
 ## Next Steps
-- Moving the reset button
 - Adding palette chooser
 - Adding a flag counter

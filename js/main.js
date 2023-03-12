@@ -16,8 +16,8 @@ class Board {
     static colors = {
         1: "darkblue",
         2: "darkgreen",
-        3: "brightred",
-        4: "#e58d2e",
+        3: "#4d181c",
+        4: "white",
         5: "#1B003D",
         6: "#93F1E3",
         7: "#06321E",
